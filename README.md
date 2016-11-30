@@ -2,7 +2,7 @@ This is a demo of [JFreeChart library](http://www.jfree.org/jfreechart/).
 
 This demo contains:
 
- - lineChart
+ - LineChart
 
  <img src="./screenShot/1.png" width = "888" height = "500" alt="" align=center />
 
@@ -10,7 +10,7 @@ This demo contains:
 
  <img src="./screenShot/2.png" width = "888" height = "500" alt="" align=center />
 
- - scatter
+ - Scatter
 
  <img src="./screenShot/3.png" width = "888" height = "500" alt="" align=center />
 
