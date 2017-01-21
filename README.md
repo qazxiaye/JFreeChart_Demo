@@ -1,5 +1,9 @@
 This is a demo of [JFreeChart library](http://www.jfree.org/jfreechart/).
 
+Run:
+
+mvn test
+
 This demo contains:
 
  - LineChart
