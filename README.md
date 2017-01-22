@@ -2,7 +2,13 @@ This is a demo of [JFreeChart library](http://www.jfree.org/jfreechart/).
 
 Run:
 
-mvn test
+ - mvn test
+
+or
+
+ - gradle run
+
+<br>
 
 This demo contains:
 
