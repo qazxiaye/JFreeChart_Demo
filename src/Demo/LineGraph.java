@@ -58,31 +58,31 @@ public class LineGraph extends JPanel
 		//layout
 		setLayout(new BorderLayout());
 		
-		add(Box.createHorizontalStrut(30),BorderLayout.WEST);
-		add(Box.createHorizontalStrut(30),BorderLayout.EAST);
-		add(Box.createVerticalStrut(30),BorderLayout.NORTH);
-		add(chartPane,BorderLayout.CENTER);
+		add(Box.createHorizontalStrut(30), BorderLayout.WEST);
+		add(Box.createHorizontalStrut(30), BorderLayout.EAST);
+		add(Box.createVerticalStrut(30),   BorderLayout.NORTH);
+		add(chartPane, BorderLayout.CENTER);
 	}
 	
 	private void InitDataSet()
 	{
-		double[] yields = Utils.ReadPara("yield");
+		double[] yields = Utils.GetParaTab("yield");
 		int yieldNb = yields.length;
 
 		String[] curSampleNb = new String[yieldNb];
 
-		for (int i = 0; i < yieldNb; i++)
+		for(int i=0; i<yieldNb; i++)
 		{
-			int n = sampleNb * (i + 1) / yieldNb;
+			int n = sampleNb * (i+1) / yieldNb;
 			curSampleNb[i] = "" + n;
 		}
 		
 		dataSet = new DefaultCategoryDataset();
 		try
 		{
-			for (int i = 0; i < yieldNb; i++)
+			for(int i=0; i<yieldNb; i++)
 			{
-				dataSet.addValue(yields[i],"yield",curSampleNb[i]);
+				dataSet.addValue(yields[i], "yield", curSampleNb[i]);
 			}
 		}
 		catch (Exception e)
@@ -120,7 +120,6 @@ public class LineGraph extends JPanel
 		renderer.setBaseItemLabelFont(new Font("Times New Romain", 0, 10));
 		plot.setRenderer(renderer);
 
-		
 		CategoryAxis axis = plot.getDomainAxis();
 		axis.setCategoryLabelPositions(CategoryLabelPositions.createDownRotationLabelPositions(Math.PI/6.0));
 		

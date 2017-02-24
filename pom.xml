@@ -26,7 +26,7 @@
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>Main</mainClass>
+                            <mainClass>MainWin</mainClass>
                         </configuration>
                     </execution>
                 </executions>

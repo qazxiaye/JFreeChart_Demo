@@ -29,12 +29,12 @@ import java.util.Scanner;
 
 public class Utils
 {
-	static double[] ReadPara(String para)
+	static double[] GetParaTab(String paraType)
 	{
 		Scanner scan = null;
 		try
 		{
-			scan = new Scanner(new File("data/" + para + ".dat"));
+			scan = new Scanner(new File("data/" + paraType + ".dat"));
 		}
 		catch (FileNotFoundException e)
 		{

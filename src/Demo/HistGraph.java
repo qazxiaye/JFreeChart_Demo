@@ -46,33 +46,33 @@ import org.jfree.data.statistics.HistogramType;
 
 public class HistGraph extends JPanel implements MouseListener
 {
-	List<String> paraList;
+	List<String> paraType_list;
 	JList paraSelector;
 	
 	ChartPanel chartPane;
 	JFreeChart[] charts;
 	
-	public HistGraph(List<String> paraList)
+	public HistGraph(List<String> paraType_list)
 	{
-		this.paraList = paraList;
+		this.paraType_list = paraType_list;
 		
 		
 		//widgets: charts(JFreeChart), parameter selector (JList)
 		chartPane = new ChartPanel(null);
-		charts = new JFreeChart[paraList.size()];
+		charts = new JFreeChart[paraType_list.size()];
 		
 		DefaultListModel modelOfList = new DefaultListModel();
         paraSelector = new JList(modelOfList);
         
-        for(int i=0; i<paraList.size(); i++)
+        for(int i=0; i<paraType_list.size(); i++)
         {
-        	modelOfList.addElement(paraList.get(i));
+        	modelOfList.addElement(paraType_list.get(i));
         	charts[i] = null;
         }
         
         paraSelector.setSelectedIndex(0);
         
-        charts[0] = CreateChart(paraList.get(0));
+        charts[0] = CreateChart(paraType_list.get(0));
         chartPane.setChart(charts[0]);
         
         
@@ -122,7 +122,7 @@ public class HistGraph extends JPanel implements MouseListener
 	private JFreeChart CreateChart(String para)
 	{
 		//read .dat file
-		double[] value = Utils.ReadPara(para);
+		double[] value = Utils.GetParaTab(para);
 		
 		//generate chart
 		HistogramDataset dataset = new HistogramDataset();
@@ -156,7 +156,7 @@ public class HistGraph extends JPanel implements MouseListener
 			int selected = paraSelector.getSelectedIndex();
 			
 			if(charts[selected] == null)
-				charts[selected] = CreateChart(paraList.get(selected));
+				charts[selected] = CreateChart(paraType_list.get(selected));
 			
 			chartPane.setChart(charts[selected]);
 		}

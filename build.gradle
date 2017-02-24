@@ -9,7 +9,7 @@ sourceSets {
     }
 }
 
-mainClassName = 'Main'
+mainClassName = 'MainWin'
 
 repositories {
     mavenCentral()

@@ -52,7 +52,7 @@ public class ScatterGraph extends JPanel implements MouseListener
 {
 	int sampleNb;
 	
-	List<String> paraList;
+	List<String> paraType_list;
 	JList xSelector;
 	JList ySelector;
 	
@@ -60,10 +60,10 @@ public class ScatterGraph extends JPanel implements MouseListener
 	JFreeChart[][] charts;
 	DefaultXYDataset dataSet;
 	
-	public ScatterGraph(int sampleNb, List<String> paraList)
+	public ScatterGraph(int sampleNb, List<String> paraType_list)
 	{
 		this.sampleNb = sampleNb;
-		this.paraList = paraList;
+		this.paraType_list = paraType_list;
 		
 		
 		//widgets: charts(JFreeChart), parameter selectors (JList)
@@ -77,14 +77,14 @@ public class ScatterGraph extends JPanel implements MouseListener
         JScrollPane ySelPane = new JScrollPane();
         ySelPane.setViewportView(ySelector);
         
-        charts = new JFreeChart[paraList.size()][paraList.size()];
-        for(int i=0; i<paraList.size(); i++)
+        charts = new JFreeChart[paraType_list.size()][paraType_list.size()];
+        for(int i=0; i<paraType_list.size(); i++)
         {
-        	String para = paraList.get(i);
+        	String para = paraType_list.get(i);
         	xModel.addElement(para);
         	yModel.addElement(para);
         	
-        	for(int j=0; j<paraList.size(); j++)
+        	for(int j=0; j<paraType_list.size(); j++)
         	{
         		charts[i][j] = null;
         	}
@@ -106,7 +106,6 @@ public class ScatterGraph extends JPanel implements MouseListener
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.anchor = GridBagConstraints.WEST;
         gbc.fill   = GridBagConstraints.BOTH;
-//        gbc.gridwidth = 1;
         
         gbc.insets  = new Insets(5,20,5,5);
         gbc.gridx   = 0;
@@ -141,8 +140,8 @@ public class ScatterGraph extends JPanel implements MouseListener
 		AddDataSet(x,y);
 		
 		JFreeChart jfreechart = ChartFactory.createScatterPlot("Scatter",
-				paraList.get(x), 
-				paraList.get(y),
+				paraType_list.get(x), 
+				paraType_list.get(y),
 				dataSet, 
 				PlotOrientation.VERTICAL, true, false, false);
 		
@@ -185,8 +184,8 @@ public class ScatterGraph extends JPanel implements MouseListener
 		}
 		
 		//read X, Y
-		double[] valueX = Utils.ReadPara(paraList.get(x));
-		double[] valueY = Utils.ReadPara(paraList.get(y));
+		double[] valueX = Utils.GetParaTab(paraType_list.get(x));
+		double[] valueY = Utils.GetParaTab(paraType_list.get(y));
 		
 		//create data set
 		double[][] dataSetPass = new double[2][sampleNb - failIndexList.size()];

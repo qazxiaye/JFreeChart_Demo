@@ -33,27 +33,27 @@ import Demo.LineGraph;
 import Demo.HistGraph;
 import Demo.ScatterGraph;
 
-public class Main extends JTabbedPane
+public class MainWin extends JTabbedPane
 {
 	int sampleNb;
-	List<String> paraList = new ArrayList<String>();
+	List<String> paraType_list = new ArrayList<String>();
 	
-	public Main()
+	private MainWin()
 	{
 		super();
 		
 		Init();
 		
 		addTab("Line",     new LineGraph(sampleNb));
-		addTab("Histgram", new HistGraph(paraList));
-		addTab("Scatter",  new ScatterGraph(sampleNb, paraList));
+		addTab("Histgram", new HistGraph(paraType_list));
+		addTab("Scatter",  new ScatterGraph(sampleNb, paraType_list));
 	}
 	
 	private void Init()
 	{
-		//Init sample nb
 		Scanner scan = null;
 		
+		//Init sample nb
 		try
 		{
 			scan = new Scanner(new File("data/fmc.import"));
@@ -66,9 +66,6 @@ public class Main extends JTabbedPane
 		}
 		
 		sampleNb = scan.nextInt();
-		
-		//Yield nb
-//		line = scan.nextLine();
 		
 		//Init parameter list
 		try
@@ -85,14 +82,14 @@ public class Main extends JTabbedPane
 		while(scan.hasNextLine())
 		{
 			String s[] = scan.nextLine().split(" ");
-			paraList.add(s[0]);
+			paraType_list.add(s[0]);
 		}
 	}
 	
 	public static void main(String[] args)
     {
 		JFrame f = new JFrame();
-		f.add(new Main());
+		f.add(new MainWin());
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.pack();           
 		f.setVisible(true);
